@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb")
+const { MongoClient } = require("mongodb")
 
 let dbConnection
 
@@ -7,12 +7,10 @@ module.exports = {
     MongoClient.connect("mongodb://127.0.0.1:27017/test")
       .then(client => {
         dbConnection = client.db()
-        console.log("then method success")
         return cb()
       })
       .catch(err => {
-        console.error(err)
-        console.error("an error occured")
+        console.error(err,"could not connect to the database")
         return cb(err)
       })
   },
